@@ -6,11 +6,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <ul>
+      <li>
+        <%= link_to "home", root_path %>
+      </li>
+      <li>
+        <%= link_to "about", about_path %>
+      </li>
+      <li>
+        <%= link_to "log_in", new_customer_session_path %>
+      </li>
+      <li>
+        <%= link_to "sign_up", new_customer_registration_path %>
+      </li>
+      <li>
+        <%= link_to "log_out", destroy_customer_session_path %>
+      </li>
+    </ul>
     <%= yield %>
   </body>
 </html>
