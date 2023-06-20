@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
+  
+  resources :customer
 
   root to: 'homes#top'
 

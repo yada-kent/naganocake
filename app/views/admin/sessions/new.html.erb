@@ -1,4 +1,5 @@
 <h2>管理者のログイン画面</h2>
+<h3>管理者のみログイン可能、顧客は不可</h3>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -24,3 +25,4 @@
 <% end %>
 
 <%= render "admin/shared/links" %>
+

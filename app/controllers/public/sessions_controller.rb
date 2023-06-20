@@ -8,6 +8,9 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def show
+    @public = Public.find(params[:id])
+  end
   # POST /resource/sign_in
   # def create
   #   super
