@@ -1,15 +1,31 @@
 Rails.application.routes.draw do
 
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-  }
+
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
-  
-  resources :customer
+
+  scope module: :public do
+    resource :customers, only: [:show, :edit, :update]
+    get 'customers/confirm_delete', to: 'customers#confirm_delete'
+    get 'customers/unsubscribe', to: 'customers#unsubscribe'
+  end
+
+  scope module: :public do
+    resource :items, only: [:show, :index]
+  end
+
+  scope module: :public do
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    patch 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+  end
+
+
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
   root to: 'homes#top'
 
