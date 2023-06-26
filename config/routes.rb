@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :customers, only: [:show, :edit, :update]
     get 'customers/confirm_delete', to: 'customers#confirm_delete'
-    get 'customers/unsubscribe', to: 'customers#unsubscribe'
+    patch 'customers/unsubscribe', to: 'customers#unsubscribe'
   end
 
   scope module: :public do
