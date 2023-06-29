@@ -1,0 +1,26 @@
+<h1>編集画面</h1>
+
+<div class="container">
+
+
+  <%= form_with model: @item, url: admin_item_path, method: :patch do |form| %>
+
+      <%= form.label :name %>
+      <%= form.text_field :name%>
+
+      <%= form.label :introduction %>
+      <%= form.text_area :introduction %>
+
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit 'Update', class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

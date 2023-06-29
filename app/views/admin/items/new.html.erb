@@ -1,0 +1,14 @@
+<商品登録画面>
+
+   <%= form_with model: @item, url: admin_items_path, method: :post do |form| %>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+      <%= form.label :introduction %>
+      <%= form.text_area :introduction %>
+      <%= form.label :price %>
+      <%= form.number_field :price %>
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+
+    <%= form.submit %>
+  <% end %>

@@ -1,0 +1,6 @@
+<投稿商品詳細>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.price %>
+<%= image_tag @item.image, size: "100x100"  %>
+<%= link_to "商品編集", edit_admin_item_path %>

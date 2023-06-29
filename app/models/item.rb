@@ -3,5 +3,11 @@ class Item < ApplicationRecord
    validates :name
    validates :introduction
    validates :price
- end
+   validates :image
+   end
+
+   has_one_attached :image
+
+
+
 end

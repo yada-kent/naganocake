@@ -1,0 +1,9 @@
+<h1>商品一覧</h1>
+<%= link_to "新規投稿", new_admin_item_path %>
+<% @items.each do |item| %>
+<%= item.name %>
+<%= item.introduction %>
+<%= item.price %>
+<%= image_tag item.image, size: "100x100"  %>
+<%= link_to "商品詳細", admin_item_path(item) %>
+<% end %>
