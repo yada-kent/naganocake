@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resource :items, only: [:show, :index]
+    resources :items, only: [:show, :index]
   end
 
   scope module: :public do

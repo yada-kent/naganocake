@@ -1,9 +1,26 @@
 <h1>商品一覧</h1>
-<%= link_to "新規投稿", new_admin_item_path %>
-<% @items.each do |item| %>
-<%= item.name %>
-<%= item.introduction %>
-<%= item.price %>
-<%= image_tag item.image, size: "100x100"  %>
-<%= link_to "商品詳細", admin_item_path(item) %>
-<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <%= paginate @items %>
+  </div>
+
+<%= link_to "商品登録", new_admin_item_path %>
