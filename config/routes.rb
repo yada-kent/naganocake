@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
   end
 
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
+
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"

@@ -1,0 +1,27 @@
+<h1>会員一覧</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= link_to "#{customer.last_name} #{customer.first_name}" ,admin_customer_path(customer)%></td>
+        <td><%= customer.email %></td>
+        <td style="color: <%= customer.is_deleted ? 'gray' : 'green' %>;">
+          <%= customer.is_deleted ? '退会' : '有効' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+<%= paginate @customers %>
+</div>
