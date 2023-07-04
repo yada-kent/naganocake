@@ -4,6 +4,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    # 商品詳細のコード
+    @item = Item.find(params[:id])
   end
+
 end

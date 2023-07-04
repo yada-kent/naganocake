@@ -1,1 +1,53 @@
-<h1>商品詳細画面</h1>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-12 text-center mb-4">
+      <h1 class="display-8">商品詳細</h1>
+    </div>
+  </div>
+
+
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <%= image_tag @item.image, size: "300x200" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>商品名</th>
+                <td><%= @item.name %></td>
+              </tr>
+              <tr>
+                <th>商品説明</th>
+                <td><%= @item.introduction %></td>
+              </tr>
+              <tr>
+                <th>税込価格</th>
+                <td><%= @item.price %> 円</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <div class="form-group">
+        <%= f.label :amount, "数量" %>
+        <%= f.select :amount, options_for_select(1..10) %>
+      </div>
+      <%= f.submit "カートに追加", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+</div>
