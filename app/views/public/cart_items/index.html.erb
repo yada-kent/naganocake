@@ -1,1 +1,48 @@
-<h1>カート内商品データ</h1>
+<% if @cart_items.any? %>
+  <h1 class="mb-4">カート内商品データ</h1>
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+  <table class="table cart-items-table">
+    <thead class="thead-dark">
+      <tr>
+        <th>商品名</th>
+        <th>税込み価格</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% total_amount = 0 %> <!-- 合計金額を初期化 -->
+      <% @cart_items.each do |cart_item| %>
+        <% subtotal = (cart_item.item.price * cart_item.amount * 1.1).floor %> <!-- 小計を計算 -->
+        <% total_amount += subtotal %> <!-- 合計金額に小計を加算 -->
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= (cart_item.item.price * 1.1).floor %>円</td>
+          <td>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, class: "update-form" do |f| %>
+              <%= f.select :amount, options_for_select(1..100, selected: cart_item.amount), class: "form-control" %>
+              <%= f.submit "更新", class: "btn btn-primary btn-sm mt-2" %>
+            <% end %>
+          </td>
+          <td><%= subtotal %>円</td>
+          <td>
+            <%= button_to "削除", cart_item_path(cart_item), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="4" class="total-label text-right">合計金額:</td>
+        <td class="total-amount"><%= total_amount %>円</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <%= link_to "注文する", new_order_path, method: :get, class: "btn btn-success mr-2" %>
+    <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: { confirm: "本当にカートを空にしますか？" }, class: "btn btn-danger" %>
+  </div>
+<% else %>
+  <p>カートは空です。</p>
+<% end %>
