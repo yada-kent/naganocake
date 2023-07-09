@@ -8,14 +8,15 @@
     <%= f.label :payment_method, "クレジットカード" %><br>
   </div>
   <h2>お届け先</h2>
-  <div class="form-group">
-    <%= f.label :address %><br>
-    <%= f.radio_button :address, :self %>
-    <%= f.label :address, "ご自身の住所" %><br>
-    <%= f.label :address, value: @order.address %><br>
-    <%= f.radio_button :address, :new %>
-    <%= f.label :address, "新しいお届け先" %><br>
-  </div>
+<div class="form-group">
+  <%= f.radio_button :address, :self %>
+  <%= f.label :address, "ご自身の住所" %><br>
+  <%= f.label :address, value: @order.address %><br>
+  <%= f.label :postal_code, value: @order.postal_code %><br>
+  <%= f.label :name, value: @order.name %><br>
+  <%= f.radio_button :address, :new %>
+  <%= f.label :address, "新しいお届け先" %><br>
+</div>
 
 <h2>新しいお届け先</h2>
 <div class="form-group">

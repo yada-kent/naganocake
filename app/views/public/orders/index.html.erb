@@ -1,1 +1,9 @@
 <h1>注文履歴</h1>
+
+<% if @orders.any? %>
+  <% @orders.each do |order| %>
+    <%= order.name %>
+  <% end %>
+<% else %>
+  <p>注文履歴はありません。</p>
+<% end %>
