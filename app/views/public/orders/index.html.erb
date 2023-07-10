@@ -1,9 +1,26 @@
 <h1>注文履歴</h1>
-
 <% if @orders.any? %>
-  <% @orders.each do |order| %>
-    <%= order.name %>
-  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>注文日時</th>
+        <th>合計金額</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <% if order.customer_id == current_customer.id %> <!-- ログイン中の顧客の注文のみ表示 -->
+          <tr>
+            <td><%= order.created_at %></td>
+            <td><%= order.total_amount %>円</td>
+            <td><%= link_to "詳細", order_path(order) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <p>注文履歴はありません。</p>
 <% end %>

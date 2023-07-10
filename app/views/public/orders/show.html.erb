@@ -1,1 +1,30 @@
-<h1>sow</h1>
+
+<h2>注文情報</h2>
+<p>注文日時: <%= @order.created_at %></p>
+<p>合計金額: <%= @order.total_amount %>円</p>
+<p>支払い方法: <%= @order.payment_method_i18n %></p>
+<p>お届け先: <%= @order.address %></p>
+
+<h2>注文商品</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込み）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_details.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.name %></td>
+        <td><%= (order_item.item.price * 1.1).floor %>円</td>
+        <td><%= order_item.amount %>個</td>
+        <td><%= (order_item.item.price * order_item.amount * 1.1).floor %>円</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "戻る", orders_history_path, class: "btn btn-primary" %>

@@ -5,23 +5,29 @@ class Public::OrdersController < ApplicationController
     end
 
     def show
-
+        @order = Order.find(params[:id])
     end
 
     def create
       @order = Order.new(order_params)
       @order.customer = current_customer
       if @order.save
-        
+
         # 今ログインしているユーザのカートを取得
         cart_items = current_customer.cart_items
-        
+
         # cart_itemsのそれぞれをOrderDetailにコピ－する(each文を使う)
-        
-        
+        cart_items.each do |cart_item|
+          @order_details = OrderDetail.new
+          @order_details.order_id = @order.id
+          @order_details.item_id = cart_item.item.id
+          @order_details.amount = cart_item.amount
+          @order_details.purchase_price = cart_item.item.price
+          @order_details.save
+        end
         # カート内の商品を削除する
         cart_items.destroy_all
-        
+
         redirect_to orders_complete_path
       else
         render :new
