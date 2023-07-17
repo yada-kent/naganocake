@@ -1,9 +1,16 @@
 
 <h2>注文情報</h2>
-<p>注文日時: <%= @order.created_at %></p>
+<table class="table table-bordered">
+  <tr>
+    <th>注文日時</th>
+    <td><%= @order.created_at %></td>
+  </tr>
+
 <p>合計金額: <%= @order.total_amount %>円</p>
 <p>支払い方法: <%= @order.payment_method_i18n %></p>
 <p>お届け先: <%= @order.address %></p>
+</table>
+
 
 <h2>注文商品</h2>
 <table class="table">

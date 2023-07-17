@@ -1,33 +1,45 @@
 <h1>会員詳細</h1>
 
 
-  <table class="table table-bordered">
+  <table class="table table-borderless">
     <tbody>
       <tr>
-        <th class="col-3">氏名</th>
+        <th class="col-2">会員ID</th>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <th class="col-2">氏名</th>
         <td><%= @customer.last_name %> <%= @customer.first_name %></td>
       </tr>
       <tr>
-        <th class="col-3">氏名（カナ）</th>
+        <th class="col-2">フリガナ</th>
         <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
       </tr>
-      <tr>
-        <th class="col-3">Email</th>
-        <td><%= @customer.email %></td>
-      </tr>
-      <tr>
-        <th class="col-3">郵便番号</th>
+       <tr>
+        <th class="col-2">郵便番号</th>
         <td><%= @customer.postal_code %></td>
       </tr>
-      <tr>
-        <th class="col-3">住所</th>
+       <tr>
+        <th class="col-2">住所</th>
         <td><%= @customer.address %></td>
       </tr>
       <tr>
-        <th class="col-3">電話番号</th>
+        <th class="col-2">電話番号</th>
         <td><%= @customer.telephone_number %></td>
       </tr>
+      <tr>
+        <th class="col-2">メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th class="col-2">会員ステータス</th>
+        <td style="color: <%= @customer.is_deleted ? 'gray' : 'green' %>;">
+        <%= @customer.is_deleted ? '退会' : '有効' %></td>
+      </tr>
+
+
     </tbody>
   </table>
-
-   <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success mb-3" %>
+  <div class="row mt-4 justify-content-center">
+    <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-lg btn-success mb-3" %>
+  </div>
