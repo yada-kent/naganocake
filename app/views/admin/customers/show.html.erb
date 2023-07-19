@@ -8,31 +8,31 @@
         <td><%= @customer.id %></td>
       </tr>
       <tr>
-        <th class="col-2">氏名</th>
+        <th>氏名</th>
         <td><%= @customer.last_name %> <%= @customer.first_name %></td>
       </tr>
       <tr>
-        <th class="col-2">フリガナ</th>
+        <th>フリガナ</th>
         <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
       </tr>
        <tr>
-        <th class="col-2">郵便番号</th>
+        <th>郵便番号</th>
         <td><%= @customer.postal_code %></td>
       </tr>
        <tr>
-        <th class="col-2">住所</th>
+        <th>住所</th>
         <td><%= @customer.address %></td>
       </tr>
       <tr>
-        <th class="col-2">電話番号</th>
+        <th>電話番号</th>
         <td><%= @customer.telephone_number %></td>
       </tr>
       <tr>
-        <th class="col-2">メールアドレス</th>
+        <th>メールアドレス</th>
         <td><%= @customer.email %></td>
       </tr>
       <tr>
-        <th class="col-2">会員ステータス</th>
+        <th>会員ステータス</th>
         <td style="color: <%= @customer.is_deleted ? 'gray' : 'green' %>;">
         <%= @customer.is_deleted ? '退会' : '有効' %></td>
       </tr>

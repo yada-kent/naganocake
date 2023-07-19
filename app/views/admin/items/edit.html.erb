@@ -1,30 +1,29 @@
 <h1>編集画面</h1>
 
-<div class="container">
-  <%= form_with model: @item, url: admin_item_path, method: :patch do |form| %>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="form-group">
-          <%= form.label :image, "商品画像" %>
-          <%= form.file_field :image, class: "form-control-file" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :name, "商品名" %>
-          <%= form.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :introduction, "商品説明" %>
-          <%= form.text_area :introduction, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :price, "税抜価格" %>
-          <%= form.number_field :price, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-4 justify-content-center">
-      <%= form.submit '変更を保存', class: "btn btn-lg btn-success" %>
-    </div>
-  <% end %>
-</div>
+<table class="table table-borderless">
+  <tbody>
+    <%= form_with model: @item, url: admin_item_path, method: :patch do |form| %>
+      <tr>
+        <th><%= form.label :image, "商品画像" %></th>
+        <td><%= form.file_field :image, class: "form-control-file" %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :name, "商品名" %></th>
+        <td><%= form.text_field :name, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :introduction, "商品説明" %></th>
+        <td><%= form.text_area :introduction, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= form.label :price, "税抜価格" %></th>
+        <td><%= form.number_field :price, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-center">
+          <%= form.submit '変更を保存', class: "btn btn-lg btn-success" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

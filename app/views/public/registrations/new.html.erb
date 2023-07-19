@@ -14,14 +14,26 @@
       <%= render "public/shared/error_messages", resource: resource %>
 
       <tr class="align-middle">
+        <th>名前</th>
+        <td>（性）</td>
+        <td>
+          <%= f.text_field :last_name, class: "form-control", placeholder: "性" %>
+        </td>
+        <td>（名）</td>
+        <td>
+          <%= f.text_field :first_name, class: "form-control", placeholder: "名" %>
+        </td>
+      </tr>
+
+      <tr class="align-middle">
         <th>フリガナ</th>
         <td>（セイ）</td>
         <td>
-          <%= f.text_field :last_name_kana, class: "form-control", placeholder: "セイ", size: "20" %>
+          <%= f.text_field :last_name_kana, class: "form-control", placeholder: "セイ"%>
         </td>
         <td>（メイ）</td>
         <td>
-          <%= f.text_field :first_name_kana, class: "form-control", placeholder: "メイ", size: "20" %>
+          <%= f.text_field :first_name_kana, class: "form-control", placeholder: "メイ" %>
         </td>
       </tr>
 
@@ -49,8 +61,10 @@
         <th><%= f.label :address, "住所" %></th>
         <td></td>
         <td>
-          <%= f.text_field :address, class: "form-control", placeholder: "東京都渋谷区" %>
+          <%= f.text_area :address, class: "w-100", placeholder: "東京都渋谷区代々木00000000000000000" %>
         </td>
+        <td></td>
+        <td></td>
       </tr>
 
       <tr class="align-middle">
@@ -82,14 +96,14 @@
         <td></td>
         <td></td>
       </tr>
+    </tbody>
+  </table>
 
-      <tr>
-        <td colspan="5" class="text-center">
-          <%= f.submit "新規登録", class: "btn btn-lg btn-success" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+   <div class="text-center">
+    <%= f.submit "新規登録", class: "btn btn-lg btn-success" %>
+  </div>
 
-<%= render "public/shared/links" %>
+<% end %>
+
+<p>すでに登録済みの方</p>
+<%= link_to "こちら", customer_session_path %>　からログインしてください。

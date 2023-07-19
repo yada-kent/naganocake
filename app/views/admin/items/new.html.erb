@@ -4,38 +4,20 @@
   <tbody>
     <%= form_with model: @item, url: admin_items_path, method: :post do |form| %>
       <tr>
-        <th class="col-2"><%= form.label :image, "商品画像" %></th>
+        <th><%= form.label :image, "商品画像" %></th>
         <td><%= form.file_field :image, class: "form-control-file" %></td>
       </tr>
       <tr>
-        <th class="col-2"><%= form.label :name, "商品名" %></th>
-        <td>
-          <div class="form-row">
-            <div class="col-4">
-              <%= form.text_field :name, class: "form-control" %>
-            </div>
-          </div>
-        </td>
+        <th><%= form.label :name, "商品名" %></th>
+        <td><%= form.text_field :name, class: "form-control" %></td>
       </tr>
       <tr>
-        <th class="col-2"><%= form.label :introduction, "商品説明" %></th>
-        <td>
-          <div class="form-row">
-            <div class="col-4">
-              <%= form.text_area :introduction, class: "form-control" %>
-            </div>
-          </div>
-        </td>
+        <th><%= form.label :introduction, "商品説明" %></th>
+        <td><%= form.text_area :introduction, class: "form-control" %></td>
       </tr>
       <tr>
-        <th class="col-2"><%= form.label :price, "税抜価格" %></th>
-        <td>
-          <div class="form-row">
-            <div class="col-4">
-              <%= form.number_field :price, class: "form-control" %>
-            </div>
-          </div>
-        </td>
+        <th><%= form.label :price, "税抜価格" %></th>
+        <td><%= form.number_field :price, class: "form-control" %></td>
       </tr>
       <tr>
         <td colspan="2" class="text-center">

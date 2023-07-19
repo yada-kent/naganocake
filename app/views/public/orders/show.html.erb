@@ -1,19 +1,45 @@
 
-<h2>注文情報</h2>
+<h2>注文履歴詳細</h2>
+
+<h4>注文情報</h4>
 <table class="table table-bordered">
   <tr>
-    <th>注文日時</th>
-    <td><%= @order.created_at %></td>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime("%Y/%-m/%-d") %></td>
   </tr>
+  <tr>
+    <th>配送先</th>
+    <td>〒<%= @order.postal_code %><br><%= @order.address %> <%= @order.name %></td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <th>合計金額</th>
+    <td><%= @order.total_amount %>円</td>
+  </tr>
+</table>
 
-<p>合計金額: <%= @order.total_amount %>円</p>
-<p>支払い方法: <%= @order.payment_method_i18n %></p>
-<p>お届け先: <%= @order.address %></p>
+<h4>請求情報</h4>
+<table class="table table-bordered">
+  <tr>
+    <th>商品合計</th>
+     <td><%= @order.total_amount - 800 %>円</td>
+  </tr>
+  <tr>
+    <th>配送料</th>
+    <td>800円</td>
+  </tr>
+  <tr>
+    <th>ご請求額</th>
+    <td><%= @order.total_amount %>円</td>
+  </tr>
 </table>
 
 
-<h2>注文商品</h2>
-<table class="table">
+<h4>注文内容</h4>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>商品名</th>
