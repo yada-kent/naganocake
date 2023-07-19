@@ -12,7 +12,7 @@
       <% @orders.each do |order| %>
         <% total_quantity = order.order_details.sum(:amount) %>
         <tr>
-          <td><%= link_to order.created_at, admin_order_path(order) %></td> <!-- 注文日時をリンクにする -->
+          <td><%= link_to order.created_at.strftime("%Y/%-m/%-d"), admin_order_path(order) %></td> <!-- 注文日時をリンクにする -->
           <td><%= order.name %></td>
           <td><%= total_quantity %>個</td>
         </tr>
